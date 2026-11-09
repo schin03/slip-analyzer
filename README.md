@@ -2,7 +2,7 @@
 
 An open-source, **analysis and education** tool for exploring NBA player props and game lines. It surfaces statistical "leans" with transparent, human-readable reasoning, and shows how pairing two picks changes payout, probability, and risk.
 
-> **Status:** Sprint 0 (project skeleton). No product features yet. See [`docs/sprints/`](docs/sprints/) and the [GitHub Project board](../../projects).
+> **Status:** Sprint 0 (project skeleton): backend skeleton and mock odds provider in progress. No product features yet. See [`docs/sprints/`](docs/sprints/) and the [GitHub Project board](../../projects).
 
 ## Disclaimer (please read)
 
@@ -37,7 +37,18 @@ The backend never exposes a raw provider feed; it serves derived analysis only. 
 
 ## Local setup
 
-Coming in Sprint 0, Increment 2 (backend + Docker Compose).
+Prerequisites: Git, [uv](https://docs.astral.sh/uv/), Python 3.12 (uv can install it), Node.js LTS, Docker Desktop (needed from Increment 2b).
+
+Backend (see [`backend/README.md`](backend/README.md)):
+
+```powershell
+cd backend
+uv sync
+uv run pytest
+uv run uvicorn app.main:app --reload   # http://127.0.0.1:8000/docs
+```
+
+Frontend and Docker Compose arrive in later Sprint 0 increments.
 
 ## Contributing workflow
 
