@@ -10,3 +10,4 @@ All notable changes are documented here. Format based on [Keep a Changelog](http
 - README with disclaimers and planned stack.
 - Backend skeleton: FastAPI app, `/health`, settings, pytest and ruff config.
 - `OddsProvider` interface and deterministic mock provider.
+- PostgreSQL via Docker Compose (configurable host port), SQLAlchemy engine, and Alembic baseline migration

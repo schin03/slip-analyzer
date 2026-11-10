@@ -151,6 +151,9 @@ activemq-data/
 
 # Environments
 .env
+.env.*
+!.env.example
+backend/.env
 .envrc
 .venv
 env/
@@ -219,7 +222,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-.env
+backend/.env
 .env.*
 !.env.example
 node_modules/

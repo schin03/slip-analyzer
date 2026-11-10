@@ -42,8 +42,10 @@ Prerequisites: Git, [uv](https://docs.astral.sh/uv/), Python 3.12 (uv can instal
 Backend (see [`backend/README.md`](backend/README.md)):
 
 ```powershell
+docker compose up -d
 cd backend
 uv sync
+uv run alembic upgrade head
 uv run pytest
 uv run uvicorn app.main:app --reload   # http://127.0.0.1:8000/docs
 ```
