@@ -10,9 +10,10 @@ DESCRIPTION = (
     "It does not place bets. Odds change and no outcome is guaranteed."
 )
 
+
 def create_app() -> FastAPI:
     settings = get_settings()
-    app = FastAPI(title = "Slip Analyzer API", version = __version__, description = DESCRIPTION)
+    app = FastAPI(title="Slip Analyzer API", version=__version__, description=DESCRIPTION)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.cors_origins,
@@ -21,5 +22,6 @@ def create_app() -> FastAPI:
     )
     app.include_router(health_router)
     return app
+
 
 app = create_app()
