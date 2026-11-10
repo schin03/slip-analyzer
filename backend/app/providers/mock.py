@@ -1,4 +1,4 @@
-""" content is mock data. this data will never change, it is purely fictional and for testing """
+"""content is mock data. this data will never change, it is purely fictional and for testing"""
 
 from collections.abc import Callable
 from datetime import UTC, datetime, timedelta
@@ -12,7 +12,7 @@ from backend.app.providers.base import (
     OddsProvider,
     OutcomeOdds,
     Side,
-    SourceMeta
+    SourceMeta,
 )
 
 BOOKMAKER = "MockBook"
@@ -53,13 +53,13 @@ class MockOddsProvider(OddsProvider):
                 id="mock-game-1",
                 home_team="UBC",
                 away_team="SFU",
-                start_time=now + timedelta(hours=3)
+                start_time=now + timedelta(hours=3),
             ),
             Game(
                 id="mock-game-2",
                 home_team="Langara",
                 away_team="BCIT",
-                start_time=now + timedelta(hours=4)
+                start_time=now + timedelta(hours=4),
             ),
         ]
 

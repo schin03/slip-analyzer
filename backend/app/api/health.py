@@ -5,11 +5,8 @@ from backend.app.config import get_settings
 
 router = APIRouter(tags=["meta"])
 
+
 @router.get("/health")
-def health() -> dict[str,str]:
+def health() -> dict[str, str]:
     settings = get_settings()
-    return {
-        "status": "ok",
-        "version": __version__,
-        "environment": settings.environment
-    }
+    return {"status": "ok", "version": __version__, "environment": settings.environment}
