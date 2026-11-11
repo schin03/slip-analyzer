@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from backend.app import __version__
-from backend.app.config import get_settings
+from app import __version__
+from app.config import get_settings
 
 router = APIRouter(tags=["meta"])
 
