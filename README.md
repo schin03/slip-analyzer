@@ -2,7 +2,7 @@
 
 An open-source, **analysis and education** tool for exploring NBA player props and game lines. It surfaces statistical "leans" with transparent, human-readable reasoning, and shows how pairing two picks changes payout, probability, and risk.
 
-> **Status:** Sprint 0 (project skeleton): backend skeleton and mock odds provider in progress. No product features yet. See [`docs/sprints/`](docs/sprints/) and the [GitHub Project board](../../projects).
+> **Status:** Sprint 0 (project skeleton): backend, mock odds provider, database baseline, and frontend skeleton are done; CI, data-source research, and deployment are next. No product features yet. See [`docs/sprints/`](docs/sprints/) and the [GitHub Project board](../../projects).
 
 ## Disclaimer (please read)
 
@@ -37,7 +37,7 @@ The backend never exposes a raw provider feed; it serves derived analysis only. 
 
 ## Local setup
 
-Prerequisites: Git, [uv](https://docs.astral.sh/uv/), Python 3.12 (uv can install it), Node.js LTS, Docker Desktop (needed from Increment 2b).
+Prerequisites: Git, [uv](https://docs.astral.sh/uv/), Python 3.12 (uv can install it), Node.js LTS, Docker Desktop (runs the local PostgreSQL database).
 
 Backend (see [`backend/README.md`](backend/README.md)):
 
@@ -49,8 +49,24 @@ uv run alembic upgrade head
 uv run pytest
 uv run uvicorn app.main:app --reload   # http://127.0.0.1:8000/docs
 ```
+Frontend (run from the `frontend/` folder, with the backend running):
 
-Frontend and Docker Compose arrive in later Sprint 0 increments.
+```powershell
+cd frontend
+npm install
+Copy-Item .env.example .env.local   # edit only if your backend isn't at http://127.0.0.1:8000
+npm run dev                         # http://localhost:5173
+```
+
+`VITE_API_URL` tells the frontend where the backend is. It is bundled into the public JavaScript, so **never put secrets in it**. The header shows a **Backend** status chip: green when `GET /health` succeeds, red when the backend is unreachable (not running, wrong URL, or blocked by CORS).
+
+### CORS
+
+The backend only accepts browser requests from origins listed in `CORS_ORIGINS` (default: `["http://localhost:5173"]`). Opening the frontend from `http://127.0.0.1:5173` is a different origin and will be blocked by the browser. To allow another origin, set it in `backend/.env`, for example:
+
+```
+CORS_ORIGINS=["http://localhost:5173","https://your-frontend.example"]
+```
 
 ## Contributing workflow
 
