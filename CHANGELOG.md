@@ -3,6 +3,9 @@
 All notable changes are documented here. Format based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
+- GitHub Actions CI: backend (ruff, Alembic migrations, pytest against a Postgres service) and frontend (lint, build) jobs.
+- Dependabot weekly updates for GitHub Actions, npm, and uv, with minor and patch updates grouped.
+
 
 ### Added
 - Project workflow: issue templates, PR template, labels/milestones script.
@@ -13,3 +16,6 @@ All notable changes are documented here. Format based on [Keep a Changelog](http
 - PostgreSQL via Docker Compose (configurable host port), SQLAlchemy engine, and Alembic baseline migration.
 - Frontend skeleton: Vite, React, TypeScript, Tailwind v4, dark theme, header, footer disclaimers, and data-freshness chip.
 - Backend status chip that calls `GET /health` using the `VITE_API_URL` setting.
+
+### Fixed
+- `frontend/src/lib/api.ts` was silently ignored by a `lib/` rule in `.gitignore` and never committed; it is now tracked.

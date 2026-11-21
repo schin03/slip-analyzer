@@ -1,9 +1,9 @@
 # NBA Slip Analyzer
+[![CI](https://github.com/schin03/slip-analyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/schin03/slip-analyzer/actions/workflows/ci.yml)
 
 An open-source, **analysis and education** tool for exploring NBA player props and game lines. It surfaces statistical "leans" with transparent, human-readable reasoning, and shows how pairing two picks changes payout, probability, and risk.
 
-> **Status:** Sprint 0 (project skeleton): backend, mock odds provider, database baseline, and frontend skeleton are done; CI, data-source research, and deployment are next. No product features yet. See [`docs/sprints/`](docs/sprints/) and the [GitHub Project board](../../projects).
-
+> **Status:** Sprint 0 (project skeleton): backend, mock odds provider, database baseline, frontend skeleton, and CI are done; data-source research and deployment are next. No product features yet. See [`docs/sprints/`](docs/sprints/) and the [GitHub Project board](../../projects).
 ## Disclaimer (please read)
 
 - This project is for **informational and educational purposes only**. It is **not gambling advice**.
@@ -67,6 +67,23 @@ The backend only accepts browser requests from origins listed in `CORS_ORIGINS` 
 ```
 CORS_ORIGINS=["http://localhost:5173","https://your-frontend.example"]
 ```
+
+## Checks (what CI runs)
+
+Every pull request runs these automatically ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)). Run them locally first:
+
+```powershell
+# from backend/
+uv run ruff check .
+uv run ruff format --check .
+uv run pytest
+
+# from frontend/
+npm run lint
+npm run build
+```
+
+Dependabot opens weekly dependency-update PRs, which run the same checks.
 
 ## Contributing workflow
 
